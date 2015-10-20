@@ -1,0 +1,1 @@
+Arquivos acessados pelo "/" ficarão dentro da pasta public.
