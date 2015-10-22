@@ -16,3 +16,5 @@
 		}
 	});
 */
+Users = new Mongo.Collection("Users");
+Books = new Mongo.Collection("Books");
