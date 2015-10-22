@@ -1,5 +1,9 @@
 // Setande valor default de uma sessão:
 Session.setDefault('click', 0);
+Template.home.rendered = function() {
+
+	
+}
 
 Template.home.helpers({
 	// Exemplo de helper

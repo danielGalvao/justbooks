@@ -1,4 +1,8 @@
 Meteor.subscribe('livros');
+Template.books.rendered = function() {
+
+	
+}
 // 	 code only runs on the client
 Template.books.helpers({
 

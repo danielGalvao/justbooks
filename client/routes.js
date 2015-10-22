@@ -1,19 +1,25 @@
 // Rotas são definidas neste arquivo
 Router.route('/', {
-	name: 'home',
-	action: function () {
+	seo: {
+		title: 'Home'
+	},
+	action: function() {
 		this.render('home');
 	}
 });
 Router.route('/users', {
-	name: 'users',
-	action: function () {
+	seo: {
+		title: 'Users'
+	},
+	action: function() {
 		this.render('users');
 	}
 });
 Router.route('/books', {
-	name: 'books',
-	action: function () {
+	seo: {
+		title: 'Books'
+	},
+	action: function() {
 		this.render('books');
 	}
 });
