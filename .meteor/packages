@@ -21,3 +21,4 @@ iron:router
 stylus
 mquandalle:jade
 ejson
+materialize:materialize
