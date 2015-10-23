@@ -1,9 +1,3 @@
-Meteor.subscribe('usuarios');
-// 	 code only runs on the client
-Template.users.rendered = function() {
-
-	
-}
 Template.users.helpers({
 	
 	//retornar os candidatos
