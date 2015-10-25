@@ -1,4 +1,15 @@
 head
-	title Just Books App
+	title Just Books - Just Digital
+	meta(name="viewport" content="width=device-width, initial-scale=1")
 body
+	header
+		nav
+			a(href="/").logo-books Just Books
+			ul
 	+Router
+
+template(name="menu")
+	li: a(href="newbook") Cadastrar
+	li: a(href="books") Listar
+	li: a(href="board") Minha Conta
+	li: a(href="#!") Logout
