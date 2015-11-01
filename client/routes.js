@@ -19,3 +19,10 @@ Router.route('/books', {
 		this.render('books');
 	}
 });
+
+Router.route('/newbook', {
+	name: 'newbook',
+	action: function () {
+		this.render('newbook');
+	}
+});

@@ -3,3 +3,11 @@ template(name='books')
 
 template(name='newbook')
 	h1 Cadastro de livro
+	form.new-book
+		.form-group
+			input.form-control(name="bName", placeholder="Nome do livro", type="text")
+		.form-group
+			input.form-control(name="bAutor", placeholder="Autor do livro", type="text")
+		.form-group
+			input.form-control(name="bPaginas", placeholder="Numero de paginas", type="text")
+		input(type="submit", name="submit", value="Adicionar Livro").btn.btn-sm
