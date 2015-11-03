@@ -14,8 +14,22 @@ Router.route('/users', {
 });
 
 Router.route('/books', {
-	name: 'books',
+	name: 'top books',
 	action: function () {
 		this.render('books');
+	}
+});
+
+Router.route('/newbook', {
+	name: 'new book',
+	action: function () {
+		this.render('newbook');
+	}
+});
+
+Router.route('/listbooks', {
+	name: 'list books',
+	action: function () {
+		this.render('listbooks');
 	}
 });
