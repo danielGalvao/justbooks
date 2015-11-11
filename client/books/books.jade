@@ -3,16 +3,18 @@ template(name='books')
 
 template(name='newbook')
 	h1 Cadastro de livro
-	form.new-book
-		.form-group
-			input.form-control(name="bName", placeholder="Nome do livro", type="text")
-		.form-group
-			input.form-control(name="bAutor", placeholder="Autor do livro", type="text")
-		.form-group
-			input.form-control(name="bPaginas", placeholder="Numero de paginas", type="text")
-		.form-group
-			input(type="file", name="CapaLivro")
-		input(type="submit", name="submit", value="Adicionar Livro").btn.btn-sm
+	//- form.new-book
+	//- 	.form-group
+	//- 		input.form-control(name="bName", placeholder="Nome do livro", type="text")
+	//- 	.form-group
+	//- 		input.form-control(name="bAutor", placeholder="Autor do livro", type="text")
+	//- 	.form-group
+	//- 		input.form-control(name="bPaginas", placeholder="Numero de paginas", type="text")
+	//- 	.form-group
+	//- 		input(type="file", name="CapaLivro")
+	//- 	input(type="submit", name="submit", value="Adicionar Livro").btn.btn-sm
+	
+	{{> quickForm collection="Books" id="insertBookForm" type="insert"}}
 
 template(name='listBooks')
 	h1 Lista de livros

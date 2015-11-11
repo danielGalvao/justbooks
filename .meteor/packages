@@ -20,3 +20,6 @@ stylus
 iron:router
 ejson
 materialize:materialize@=0.97.0
+aldeed:autoform
+aldeed:simple-schema
+aldeed:collection2
