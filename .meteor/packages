@@ -24,3 +24,5 @@ aldeed:autoform
 aldeed:simple-schema
 aldeed:collection2
 yogiben:autoform-file
+cfs:filesystem
+cfs:standard-packages
