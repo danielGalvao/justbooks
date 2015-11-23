@@ -13,14 +13,5 @@ Books.attachSchema(new SimpleSchema({
     type: Number,
     label: "Número de páginas",
     min: 0
-  },
-  Imagem: {
-    type: String,
-    autoform: {
-      afFieldInput: {
-        type: 'fileUpload',
-        collection: 'Images'
-      }
-    }
   }
 }));
