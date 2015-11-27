@@ -1,24 +1,20 @@
 Books = new Mongo.Collection("books");
 Books.attachSchema(new SimpleSchema({
-  titulo: {
+  title: {
     type: String,
     label: "Título"
   },
-  autor: {
+  author: {
     type: String,
     label: "Autor"
   },
-  paginas: {
+  pages: {
     type: Number,
     label: "Número de páginas"
   },
-  imagem: {
+  image: {
     type: String,
     label: "Capa do livro"
-  },
-  descricao: {
-    type: String,
-    label: "Descrição"
   },
   isbn: {
     type: Number,
@@ -28,9 +24,21 @@ Books.attachSchema(new SimpleSchema({
     type: String,
     label: "Editora"
   },
-  lingua: {
+  language: {
     type: String,
     label: "Língua"
+  },
+  description: {
+    type: String,
+    label: "Descrição",
+    max: 2000,
+    autoform: {
+      afFieldInput: {
+        type: "textarea",
+        rows: 10,
+        class: "foo"
+      }
+    }
   }
 }));
 
