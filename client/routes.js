@@ -22,6 +22,9 @@ Router.route('/books', {
 
 Router.route('/newbook', {
 	name: 'new book',
+	waitOn: function () {
+		return this.subscribe('books');
+	},
 	action: function () {
 		this.render('newbook');
 	}
