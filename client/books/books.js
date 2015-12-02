@@ -10,7 +10,7 @@ Template.newbook.events({
 	var _search = $('input[name="title"]').val();
 	if(_search.length && _search.length%3 === 0){
 		$.getJSON('https://www.googleapis.com/books/v1/volumes?q=title+'+_search,function(){
-
+			//TODO: Add div to show books returned 
 		});
 	}
   }
