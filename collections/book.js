@@ -20,7 +20,7 @@ Books.attachSchema(new SimpleSchema({
     type: Number,
     label: "ISBN"
   },
-  editora: {
+  publisher: {
     type: String,
     label: "Editora"
   },
