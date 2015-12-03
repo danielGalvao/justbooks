@@ -20,9 +20,9 @@ Template.newbook.events({
   }
 
 });
-var JSONBook = JSONBook || {}
+var JSONBook = JSONBook || {};
 (function(){
-	var format: function(respJSON){
+	var format = function(respJSON){
 		// TODO: formatar JSON para obter apenas infos necessárias
 	}
 })();
