@@ -10,13 +10,19 @@ Template.newbook.events({
 		var _search = $('input[name="title"]').val();
 		if(_search.length && _search.length%3 === 0){
 			$.getJSON('https://www.googleapis.com/books/v1/volumes?q=title+'+_search,function(resp){
-				console.log(resp);
+				var resp = JSONBook.format(resp);
+				for (var i in resp) {
+					if (i > 2) break;
+					// TODO: HTML para montar os 3 livros
+				}
 			});
 		}
   }
 
 });
 var JSONBook = JSONBook || {}
-(function(JSONBook){
-
+(function(){
+	var format: function(respJSON){
+		// TODO: formatar JSON para obter apenas infos necessárias
+	}
 })();
