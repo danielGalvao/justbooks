@@ -7,12 +7,15 @@ Template.books.helpers({
 });
 Template.newbook.events({
 	'keyup input[name="title"]' : function(e){
-		var _search = $('input[name="title"]').val();
-		if(_search.length && _search.length%3 === 0){
-			$.getJSON('https://www.googleapis.com/books/v1/volumes?q=title+'+_search,function(resp){
+		var _inputSearch = $('input[name="title"]')
+		,   _searchVal = _inputSearch.val()
+		,   _insertBookForm = $('#insertBookForm');
+		if(_searchVal.length && _searchVal.length%3 === 0){
+			$.getJSON('https://www.googleapis.com/books/v1/volumes?q=title+'+_searchVal,function(resp){
 				var resp = bookFormat.formatJSON(resp.items)
 				,   HTMLBooks = bookFormat.buildHTML(resp);
-				// TODO: Add HTMLBooks DOM
+				$('ul',_insertBookForm).remove();
+				_inputSearch.after(HTMLBooks);
 			});
 		}
   }
@@ -40,7 +43,17 @@ var bookFormat = bookFormat || {};
 		return JSONformated;
 	}
 	function buildHTML(books){
-		//TODO: Build HTML
+		console.log(books);
+		var html = '<ul>';
+		for (var i in books) {
+			html+=
+				'<li>'
+					+'<b>'+books[i].title+' - </b>'
+					+'<span>'+books[i].author+'</span>';
+				+'</li>';
+		}
+		html += '</ul>';
+		return html;
 	}
 
 	bookFormat.formatJSON = formatJSON;
