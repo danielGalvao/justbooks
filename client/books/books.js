@@ -7,6 +7,7 @@ Template.books.helpers({
 });
 Template.newbook.events({
 	'keyup input[name="title"]' : function(e){
+		// TODO: Arrumar usabilidade de requisição 
 		clearTimeout(requestBooks);
 		var _inputSearch = $('input[name="title"]')
 		,   _searchVal = _inputSearch.val()
