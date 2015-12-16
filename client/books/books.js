@@ -7,16 +7,20 @@ Template.books.helpers({
 });
 Template.newbook.events({
 	'keyup input[name="title"]' : function(e){
+		clearTimeout(requestBooks);
 		var _inputSearch = $('input[name="title"]')
 		,   _searchVal = _inputSearch.val()
-		,   _insertBookForm = $('#insertBookForm');
-		if(_searchVal.length && _searchVal.length%3 === 0){
-			$.getJSON('https://www.googleapis.com/books/v1/volumes?q=title+'+_searchVal,function(resp){
-				var resp = bookFormat.formatJSON(resp.items)
-				,   HTMLBooks = bookFormat.buildHTML(resp);
-				$('ul',_insertBookForm).remove();
-				_inputSearch.after(HTMLBooks);
-			});
+		,   _insertBookForm = $('#insertBookForm')
+		,   requestBooks = false;
+		if(_searchVal.length > 3){
+			requestBooks = setTimeout(function(){
+				$.getJSON('https://www.googleapis.com/books/v1/volumes?q=title+'+_searchVal,function(resp){
+					var resp = bookFormat.formatJSON(resp.items)
+					,   HTMLBooks = bookFormat.buildHTML(resp);
+					$('ul',_insertBookForm).remove();
+					_inputSearch.after(HTMLBooks);
+				});
+			},3000);
 		}
   }
 
