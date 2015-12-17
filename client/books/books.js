@@ -7,13 +7,11 @@ Template.books.helpers({
 });
 Template.newbook.events({
 	'keyup input[name="title"]' : function(e){
-		// TODO: Arrumar usabilidade de requisição 
-		clearTimeout(requestBooks);
 		var _inputSearch = $('input[name="title"]')
 		,   _searchVal = _inputSearch.val()
-		,   _insertBookForm = $('#insertBookForm')
-		,   requestBooks = false;
+		,   _insertBookForm = $('#insertBookForm');
 		if(_searchVal.length > 3){
+			clearTimeout(requestBooks);
 			requestBooks = setTimeout(function(){
 				$.getJSON('https://www.googleapis.com/books/v1/volumes?q=title+'+_searchVal,function(resp){
 					var resp = bookFormat.formatJSON(resp.items)
@@ -21,12 +19,13 @@ Template.newbook.events({
 					$('ul',_insertBookForm).remove();
 					_inputSearch.after(HTMLBooks);
 				});
-			},3000);
+			},1000);
 		}
   }
 
 });
-var bookFormat = bookFormat || {};
+var bookFormat = bookFormat || {}
+,  requestBooks = null;
 (function(){
 	function formatJSON (respJSON){
 		if(typeof respJSON == 'object'){
@@ -48,7 +47,6 @@ var bookFormat = bookFormat || {};
 		return JSONformated;
 	}
 	function buildHTML(books){
-		console.log(books);
 		var html = '<ul>';
 		for (var i in books) {
 			html+=
