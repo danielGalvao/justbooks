@@ -32,9 +32,25 @@ var bookFormat = bookFormat || {}
 			var JSONformated = [];
 			for (var i in respJSON) {
 				var book = respJSON[i].volumeInfo;
+				if(book.authors){
+					var authors = book.authors[0].split('/');
+					if(authors.length > 1){
+						var names = authors[0].split(',')
+						,   author = names[1]+' '+names[0];
+					}else{
+						var author = book.authors[0].split(',');
+						if(author.length > 1){
+							author = author[1]+' '+author[0];
+						}else{
+							author = author[0];
+						}
+					}
+				}else{
+					authors = undefined;
+				}
 				JSONformated[i] = {
 					title:       book.title,
-					author:      book.authors ? book.authors[0] : undefined,
+					author:      author,
 					pages:       book.pageCount,
 					image:       book.imageLinks ? book.imageLinks.smallThumbnail : undefined,
 					publisher:   book.publisher,
