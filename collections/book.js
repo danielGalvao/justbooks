@@ -14,7 +14,8 @@ Books.attachSchema(new SimpleSchema({
   },
   image: {
     type: String,
-    label: "Capa do livro"
+    label: "Capa do livro",
+    optional: true
   },
   isbn: {
     type: Number,
@@ -35,8 +36,7 @@ Books.attachSchema(new SimpleSchema({
     autoform: {
       afFieldInput: {
         type: "textarea",
-        rows: 10,
-        class: "foo"
+        rows: 10
       }
     }
   }

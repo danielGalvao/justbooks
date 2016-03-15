@@ -21,7 +21,21 @@ Template.newbook.events({
 				});
 			},1000);
 		}
-  }
+	},
+	'click li' : function(event, template){
+		var bkSelected = JSON.parse(event.currentTarget.attributes[0].nodeValue)
+		,   _insertBookForm = $('#insertBookForm');
+		console.log(bkSelected);
+		$('ul',_insertBookForm).remove();
+		$('input[name="title"]',_insertBookForm).val(bkSelected.title);
+		$('input[name="author"]',_insertBookForm).val(bkSelected.author);
+		$('input[name="pages"]',_insertBookForm).val(bkSelected.pages);
+		$('input[name="isbn"]',_insertBookForm).val(bkSelected.isbn);
+		$('input[name="publisher"]',_insertBookForm).val(bkSelected.publisher);
+		$('input[name="language"]',_insertBookForm).val(bkSelected.language);
+		$('textarea[name="description"]',_insertBookForm).text(bkSelected.description);
+		_insertBookForm.removeClass('disable');
+	}
 
 });
 var bookFormat = bookFormat || {}
@@ -63,13 +77,14 @@ var bookFormat = bookFormat || {}
 		return JSONformated;
 	}
 	function buildHTML(books){
-		var html = '<ul>';
-		for (var i in books) {
+		var html = '<ul>'
+		,   bk = books;
+		for (var i in bk) {
 			html+=
-				'<li>'
-					+'<b>'+books[i].title+' - </b>'
-					+'<span>'+books[i].author+'</span>';
-				+'</li>';
+				"<li data-bk='"+JSON.stringify(bk[i])+"'>"
+					+"<b>"+bk[i].title+" - </b>"
+					+"<span>"+bk[i].author+"</span>";
+				+"</li>";
 		}
 		html += '</ul>';
 		return html;
