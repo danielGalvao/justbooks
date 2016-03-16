@@ -13,7 +13,7 @@ Router.route('/users', {
 	}
 });
 
-Router.route('/books', {
+Router.route('/topbooks', {
 	name: 'top books',
 	action: function () {
 		this.render('books');
@@ -33,6 +33,6 @@ Router.route('/newbook', {
 Router.route('/listbooks', {
 	name: 'list books',
 	action: function () {
-		this.render('listbooks');
+		this.render('listBooks');
 	}
 });
