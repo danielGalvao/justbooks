@@ -10,7 +10,8 @@ Books.attachSchema(new SimpleSchema({
   },
   pages: {
     type: Number,
-    label: "Número de páginas"
+    label: "Número de páginas",
+    optional: true
   },
   image: {
     type: String,
@@ -19,20 +20,24 @@ Books.attachSchema(new SimpleSchema({
   },
   isbn: {
     type: Number,
-    label: "ISBN"
+    label: "ISBN",
+    optional: true
   },
   publisher: {
     type: String,
-    label: "Editora"
+    label: "Editora",
+    optional: true
   },
   language: {
     type: String,
-    label: "Língua"
+    label: "Língua",
+    optional: true
   },
   description: {
     type: String,
     label: "Descrição",
     max: 2000,
+    optional: true,
     autoform: {
       afFieldInput: {
         type: "textarea",

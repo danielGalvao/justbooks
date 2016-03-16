@@ -1,7 +1,8 @@
 // 	 code only runs on the client
-Template.books.helpers({
-	//retornar os livros salvos no banco
+Template.listBooks.helpers({
+	// Retornar os livros salvos no banco
 	books: function() {
+		console.log(Books.find({}, {sort: {createdAt: -1}}));
 		return Books.find({}, {sort: {createdAt: -1}});
 	},
 });
@@ -25,7 +26,6 @@ Template.newbook.events({
 	'click li' : function(event, template){
 		var bkSelected = JSON.parse(event.currentTarget.attributes[0].nodeValue)
 		,   _insertBookForm = $('#insertBookForm');
-		console.log(bkSelected);
 		$('ul',_insertBookForm).remove();
 		$('input[name="title"]',_insertBookForm).val(bkSelected.title);
 		$('input[name="author"]',_insertBookForm).val(bkSelected.author);
