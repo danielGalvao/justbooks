@@ -43,12 +43,6 @@ Template.newbook.events({
 			event.target.className = "disable"
 		},3000);
 	}
-
-	// 'click input[name="title"]': function(event){
-	// 	if(event.target.parentNode.parentNode.className == ""){
-	// 		event.target.parentNode.parentNode.className = "disable";
-	// 	}
-	// }
 });
 var bookFormat = bookFormat || {}
 ,  requestBooks = null;
