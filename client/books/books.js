@@ -31,6 +31,7 @@ Template.newbook.events({
 		$('input[name="author"]',_insertBookForm).val(bkSelected.author);
 		$('input[name="pages"]',_insertBookForm).val(bkSelected.pages);
 		$('input[name="isbn"]',_insertBookForm).val(bkSelected.isbn);
+		$('input[name="image"]',_insertBookForm).val(bkSelected.image);
 		$('input[name="publisher"]',_insertBookForm).val(bkSelected.publisher);
 		$('input[name="language"]',_insertBookForm).val(bkSelected.language);
 		$('textarea[name="description"]',_insertBookForm).text(bkSelected.description);
