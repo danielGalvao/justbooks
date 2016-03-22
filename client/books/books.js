@@ -35,8 +35,20 @@ Template.newbook.events({
 		$('input[name="language"]',_insertBookForm).val(bkSelected.language);
 		$('textarea[name="description"]',_insertBookForm).text(bkSelected.description);
 		_insertBookForm.removeClass('disable');
+	},
+
+	'submit #insertBookForm': function (event) {
+		$('#insertBookForm textarea').text('');
+		setTimeout(function(){
+			event.target.className = "disable"
+		},3000);
 	}
 
+	// 'click input[name="title"]': function(event){
+	// 	if(event.target.parentNode.parentNode.className == ""){
+	// 		event.target.parentNode.parentNode.className = "disable";
+	// 	}
+	// }
 });
 var bookFormat = bookFormat || {}
 ,  requestBooks = null;
