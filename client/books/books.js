@@ -1,7 +1,7 @@
 // 	 code only runs on the client
 Template.listBooks.helpers({
 	// Retornar os livros salvos no banco
-	books: function() {
+	books: function() { 
 		return Books.find({}, {sort: {createdAt: -1}});
 	},
 });

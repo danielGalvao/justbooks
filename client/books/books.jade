@@ -7,4 +7,8 @@ template(name='newbook')
 		+quickForm collection="Books" class="disable" id="insertBookForm" type="insert"
 
 template(name='listBooks')
-	h1 Lista de livros
+	.container
+		h1 Lista de livros
+			ul
+			each Books
+				li Teste
