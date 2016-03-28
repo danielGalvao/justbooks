@@ -9,6 +9,9 @@ template(name='newbook')
 template(name='listBooks')
 	.container
 		h1 Lista de livros
-			ul
-			each Books
-				li Teste
+		ul
+		each books
+			+lbook
+
+template(name='lbook')
+	li #{title} - #{author}
