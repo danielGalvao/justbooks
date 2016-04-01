@@ -1,8 +1,11 @@
 // Rotas são definidas neste arquivo
 Router.route('/', {
 	name: 'home',
+	waitOn: function () {
+		return this.subscribe('books');
+	},
 	action: function () {
-		this.render('home');
+		this.render('books');
 	}
 });
 
@@ -10,16 +13,6 @@ Router.route('/users', {
 	name: 'users',
 	action: function () {
 		this.render('users');
-	}
-});
-
-Router.route('/topbooks', {
-	name: 'top books',
-	waitOn: function () {
-		return this.subscribe('books');
-	},
-	action: function () {
-		this.render('books');
 	}
 });
 
