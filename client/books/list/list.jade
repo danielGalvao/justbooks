@@ -1,0 +1,19 @@
+template(name='listBooks')
+  .container
+    h1 Lista de livros
+    ul
+    each books
+      +eachBook
+
+
+template(name='eachBook')
+  if title
+    li
+      if image
+        img(src="#{image}")
+      p
+        b Nome:
+        span #{title}
+      p
+        b Autor:
+        span #{author}

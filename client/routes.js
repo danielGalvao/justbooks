@@ -15,6 +15,9 @@ Router.route('/users', {
 
 Router.route('/topbooks', {
 	name: 'top books',
+	waitOn: function () {
+		return this.subscribe('books');
+	},
 	action: function () {
 		this.render('books');
 	}
