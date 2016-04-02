@@ -1,37 +1,49 @@
 // Rotas são definidas neste arquivo
 Router.route('/', {
-	name: 'home',
-	waitOn: function () {
+	seo: {
+		title: 'Just Books - Usuários'
+	},
+	waitOn: function() {
 		return this.subscribe('books');
 	},
-	action: function () {
+	action: function() {
+		Session.set('activeHomeNav', 'active');
 		this.render('books');
 	}
 });
 
 Router.route('/users', {
-	name: 'users',
-	action: function () {
+	seo: {
+		title: 'Just Books - Usuários'
+	},
+	action: function() {
+		Session.set('activeNav', 'users');
 		this.render('users');
 	}
 });
 
 Router.route('/newbook', {
-	name: 'new book',
-	waitOn: function () {
+	seo: {
+		title: 'Just Books - Cadastro novo livro'
+	},
+	waitOn: function() {
 		return this.subscribe('books');
 	},
-	action: function () {
+	action: function() {
+		Session.set('activeNav', 'newbook');
 		this.render('newbook');
 	}
 });
 
 Router.route('/listbooks', {
-	name: 'list books',
-	waitOn: function () {
+	seo: {
+		title: 'Just Books - Todos os Livros'
+	},
+	waitOn: function() {
 		return this.subscribe('books');
 	},
-	action: function () {
-		this.render('listBooks');
+	action: function() {
+		Session.set('activeNav', 'listbooks');
+			this.render('listBooks');
 	}
 });
