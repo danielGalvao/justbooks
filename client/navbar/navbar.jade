@@ -7,7 +7,8 @@ template(name="navbar")
 			li.logo
 				a#logo-container.brand-logo: img(src="/images/logo.png", alt="")
 			li.brand-name: h5.brand-name Just Books
-			li.active: a(href="/") Home
-			li: a(href="/newbook") Adicionar
-			li: a(href="/listBooks") Listar
+			li(class='{{activeMenu "home"}}'): a(href="/") Home
+			li(class='{{activeMenu "newbook"}}'): a(href="/newbook") Adicionar
+			li(class='{{activeMenu "listbooks"}}'): a(href="/listBooks") Listar
+			li(class='{{activeMenu "users"}}'): a(href="/users") Sign Up
 		a(href="#" data-activates="slide-out").button-collapse: i.mdi-navigation-menu
