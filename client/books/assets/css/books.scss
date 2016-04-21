@@ -1,0 +1,23 @@
+.form-group {
+  ul {
+    margin-top: 0;
+    border-bottom: 1px solid #9e9e9e;
+    border-right: 1px solid #9e9e9e;
+    padding-bottom: 10px;
+    li{
+      cursor: pointer;
+
+      &:hover {
+        background: #9BCCC7;
+      }
+    }
+  }
+}
+.disable {
+  .form-group {
+    display: none;
+    &:nth-child(1) {
+      display: block;
+    }
+  }
+}
