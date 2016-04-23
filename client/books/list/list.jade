@@ -1,19 +1,23 @@
 template(name='listBooks')
   .container
     h1 Lista de livros
-    ul
     each books
       +eachBook
 
 
 template(name='eachBook')
   if title
-    li
-      if image
-        img(src="#{image}")
-      p
-        b Nome:
-        span #{title}
-      p
-        b Autor:
-        span #{author}
+    .card.small(data-bk="#{_id}")
+      .card-image.wave-effect.waves-block.waves-light
+        if image
+          img.activator(src="#{image}")
+      .card-content
+        span.card-title.activator #{title}
+          i.material-icons.right.bookDesc more_vert
+        p
+          b Autor:
+          span #{author}
+      .card-reavel
+        span.card-title #{title}
+          i.material-icons.right.closeDesc close
+        p #{description}

@@ -4,3 +4,11 @@ Template.listBooks.helpers({
 		return Books.find({}, {sort: {createdAt: -1}});
 	},
 });
+Template.listBooks.events({
+	'click .bookDesc' : function(event, template){
+		$(".card[data-bk="+this._id+"] .card-reavel").addClass('active');
+	},
+	'click .closeDesc' : function(event, template){
+		$(".card[data-bk="+this._id+"] .card-reavel").removeClass('active');
+	}
+});
