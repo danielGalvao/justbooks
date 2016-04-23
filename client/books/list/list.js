@@ -4,7 +4,7 @@ Template.listBooks.helpers({
 		return Books.find({}, {sort: {createdAt: -1}});
 	},
 });
-Template.listBooks.events({
+Template.eachBook.events({
 	'click .bookDesc' : function(event, template){
 		$(".card[data-bk="+this._id+"] .card-reavel").addClass('active');
 	},

@@ -17,6 +17,10 @@ template(name='eachBook')
         p
           b Autor:
           span #{author}
+        a.waves-effect.waves-light.btn.red.removeBook remover
+          i.material-icons.left delete
+        a.waves-effect.waves-light.btn.getBook emprestar
+          i.material-icons.left open_in_new
       .card-reavel
         span.card-title #{title}
           i.material-icons.right.closeDesc close
