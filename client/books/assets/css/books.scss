@@ -26,6 +26,9 @@
   display: inline-block;
   margin-right: 20px;
   height: 280px;
+  .card-image:hover {
+    height: 100%;
+  }
   .card-content {
     position: relative;
   }
