@@ -10,5 +10,5 @@ template(name="navbar")
 			li(class='{{activeMenu "home"}}'): a(href="/") Home
 			li(class='{{activeMenu "newbook"}}'): a(href="/newbook") Adicionar
 			li(class='{{activeMenu "listbooks"}}'): a(href="/listBooks") Listar
-			li(class='{{activeMenu "users"}}'): a(href="/users") Sign Up
+			+loginButtons
 		a(href="#" data-activates="slide-out").button-collapse: i.mdi-navigation-menu
