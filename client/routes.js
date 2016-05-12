@@ -8,7 +8,7 @@ Router.route('/', {
 		return this.subscribe('books');
 	},
 	action: function() {
-		this.render('books');
+		this.render('listBooks');
 	}
 });
 
