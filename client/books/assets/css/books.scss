@@ -84,5 +84,11 @@
     .removeBook {
       margin-right: 5px;
     }
+    .bookDesc {
+      position: absolute;
+      right: 0;
+      top: 10px;
+      cursor: pointer;
+    }
   }
 }

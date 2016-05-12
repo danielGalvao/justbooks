@@ -44,6 +44,15 @@ Books.attachSchema(new SimpleSchema({
         rows: 10
       }
     }
+  },
+  creatorID: {
+    type: String,
+    regEx: SimpleSchema.RegEx.Id,
+    autoform: {
+        type: "hidden",
+        label: false
+    },
+    autoValue: function () { return Meteor.userId() },
   }
 }));
 

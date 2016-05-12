@@ -1,0 +1,46 @@
+<template name='listBooks'>
+  <div class="container">
+    <h1>Lista de livros</h1>
+    {{#each books}}
+      {{> eachBook}}
+    {{/each}}
+  </div>
+</template>
+
+
+<template name='eachBook'>
+  {{#if title}}
+    <div class="card small" data-bk="{{_id}}">
+      <div class="card-image wave-effect waves-block waves-light">
+        {{#if image}}
+          <img class="activator" src="{{image}}" />
+        {{/if}}
+      </div>
+      <div class="card-content">
+        <span class="card-title activator">{{title}}</span>
+          <i class="material-icons right bookDesc">more_vert</i>
+        <p>
+          <b>Autor:</b>
+          <span>{{author}}</span>
+        </p>
+        {{#if creatorID}}
+          <a class="waves-effect waves-light btn red removeBook {{currentUser.profile}}">
+            remover
+            <i class="material-icons left">delete</i>
+          </a>
+        {{else}}
+          <a class="waves-effect waves-light btn getBook">
+            emprestar
+            <i class="material-icons left">open_in_new</i>
+          </a>
+        {{/if}}
+      </div>
+      <div class="card-reavel">
+        <span class="card-title">{{title}}>
+          <i class="material-icons right closeDesc">close</i>
+        </span>
+        <p>{{description}}</p>
+      </div>
+    </div>
+  {{/if}}
+</template>

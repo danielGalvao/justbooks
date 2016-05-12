@@ -25,5 +25,4 @@ aldeed:collection2
 fourseven:scss
 accounts-password
 accounts-base
-useraccounts:core
-useraccounts:materialize
+accounts-ui

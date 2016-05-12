@@ -1,0 +1,30 @@
+<template name="navbar">
+	<nav class="top-nav teal">
+		<div class="container">
+			<div class="nav-wrapper">
+				<a class="page-title"> Can I borrow a book? </a>
+			</div>
+		</div>
+		<ul id="slide-out" class="side-nav fixed">
+			<li class="logo">
+				<a id="logo-container" class="brand-logo" src="/images/logo.png" alt=""></a>
+			</li>
+			<li class="brand-name">
+				<h5 class="brand-name">Just Books</h5>
+			</li>
+			<li class='{{activeMenu "home"}}'>
+				<a href="/">Home</a>
+			</li>
+			<li class='{{activeMenu "newbook"}}'>
+				<a href="/newbook">Adicionar</a>
+			</li>
+			<li class='{{activeMenu "listbooks"}}'>
+				<a href="/listBooks">Listar</a>
+			</li>
+			<li> {{> loginButtons}} </li>
+		</ul>
+		<a href="#" data-activates="slide-out" class="button-collapse">
+			<i class="mdi-navigation-menu"></i>
+		</a>
+	</nav>
+</template>
