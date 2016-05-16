@@ -7,17 +7,13 @@ object{
 }
 
 header, main, footer {
-	padding-left: 240px;
 	@media (max-width : 992px) {
 		padding-left: 0;
 	}
 }
-.top-nav {
-	height: 122px;
-	.page-title {
-		font-size: 48px;
-		line-height: 122px;
-	}
+
+nav{
+	padding-left: 20px;
 }
 
 .logo {
@@ -40,4 +36,10 @@ header, main, footer {
 	width: 100%;
 	text-align: center;
 	display: block;
+}
+
+#login-dropdown-list{
+	right: 20px;
+	left:inherit;
+	top: 20px;
 }

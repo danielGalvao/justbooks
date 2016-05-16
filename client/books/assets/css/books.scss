@@ -22,7 +22,7 @@
   }
 }
 .card.small {
-  width: 220px;
+  width: 200px;
   display: inline-block;
   margin-right: 20px;
   height: 280px;
@@ -76,7 +76,8 @@
       height: 26px;
       line-height: 26px;
       font-size: 9px;
-      margin-top: 10px;
+      position: absolute;
+      bottom: 40px;
       i {
         margin-right: 3px;
       }
