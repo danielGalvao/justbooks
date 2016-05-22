@@ -8,11 +8,14 @@ Template.newbook.events({
 		}
 	},
 	'click .importBook' : function(){
-		var _inputSearch = $('input[name="title"]')
-		,   _searchVal = _inputSearch.val()
-		,   _insertBookForm = $('#insertBookForm');
-		$.getJSON('https://www.googleapis.com/books/v1/volumes?q=title+'+_searchVal,function(resp){
-			console.log(resp);
+		var _inputSearchTitle = $('input[name="title"]')
+		,   _inputSearchAuthor = $('input[name="author"]')
+		,   _searchValTitle = _inputSearchTitle.val()
+		    _searchValAuthor = _inputSearchAuthor.val()
+		,   _insertBookForm = $('#insertBookForm')
+		,   inauthor = _searchValAuthor.length ? '+inauthor:'+_searchValAuthor : false;
+		_insertBookForm.removeClass('disable');
+		$.getJSON('https://www.googleapis.com/books/v1/volumes?q='+_searchValTitle+''+(inauthor ? inauthor : "")+'&orderBy=relevance&maxResults=5',function(resp){
 			var resp = bookFormat.formatJSON(resp.items[0])
 			$('input[name="title"]',_insertBookForm).val(resp.title);
 			$('input[name="author"]',_insertBookForm).val(resp.author);
@@ -23,11 +26,6 @@ Template.newbook.events({
 			$('input[name="language"]',_insertBookForm).val(resp.language);
 			$('textarea[name="description"]',_insertBookForm).text(resp.description);
 		});
-	},
-	'click li' : function(event, template){
-		var bkSelected = JSON.parse(event.currentTarget.attributes[0].nodeValue)
-
-
 	},
 
 	'submit #insertBookForm': function (event) {
@@ -44,7 +42,7 @@ var bookFormat = bookFormat || {}
 		if(typeof respJSON == 'object'){
 			var JSONformated = {};
 			var book = respJSON.volumeInfo;
-			if(book.authors[0]){
+			if(book.authors && book.authors[0]){
 				var authors = book.authors[0].split('/');
 				if(authors.length > 1){
 					var names = authors[0].split(',')
