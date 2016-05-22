@@ -13,6 +13,7 @@
     }
   }
 }
+
 .disable {
   .form-group {
     display: none;
@@ -21,6 +22,16 @@
     }
   }
 }
+
+.content-form{
+  position: relative;
+  .importBook{
+    position: absolute;
+    right: 25px;
+    top: 25px;
+  }
+}
+
 .card.small {
   width: 200px;
   display: inline-block;
