@@ -2,12 +2,16 @@ Template.newbook.events({
 	'keyup input[name="title"]' : function(e){
 		var _inputSearch = $('input[name="title"]')
 		,   _searchVal = _inputSearch.val()
-		,   _insertBookForm = $('#insertBookForm');
+		,   _insertBookForm = $('#insertBookForm')
+		,  _btnImport = $("#btnImport");
 		if(_searchVal.length > 3){
 			_insertBookForm.removeClass('disable');
+			_btnImport.removeClass('disabled');
+		}else{
+			_btnImport.addClass('disabled');
 		}
 	},
-	'click .importBook' : function(){
+	'click .importBook:not(.disabled)' : function(){
 		var _inputSearchTitle = $('input[name="title"]')
 		,   _inputSearchAuthor = $('input[name="author"]')
 		,   _searchValTitle = _inputSearchTitle.val()
@@ -15,16 +19,18 @@ Template.newbook.events({
 		,   _insertBookForm = $('#insertBookForm')
 		,   inauthor = _searchValAuthor.length ? '+inauthor:'+_searchValAuthor : false;
 		_insertBookForm.removeClass('disable');
+		bookLib.openModal();
 		$.getJSON('https://www.googleapis.com/books/v1/volumes?q='+_searchValTitle+''+(inauthor ? inauthor : "")+'&orderBy=relevance&maxResults=5',function(resp){
-			var resp = bookFormat.formatJSON(resp.items[0])
-			$('input[name="title"]',_insertBookForm).val(resp.title);
-			$('input[name="author"]',_insertBookForm).val(resp.author);
-			$('input[name="pages"]',_insertBookForm).val(resp.pages);
-			$('input[name="isbn"]',_insertBookForm).val(resp.isbn);
-			$('input[name="image"]',_insertBookForm).val(resp.image);
-			$('input[name="publisher"]',_insertBookForm).val(resp.publisher);
-			$('input[name="language"]',_insertBookForm).val(resp.language);
-			$('textarea[name="description"]',_insertBookForm).text(resp.description);
+			var resp = bookLib.formatJSON(resp.items[0])
+			,   content =  bookLib.contentModal(resp);
+			// $('input[name="title"]',_insertBookForm).val(resp.title);
+			// $('input[name="author"]',_insertBookForm).val(resp.author);
+			// $('input[name="pages"]',_insertBookForm).val(resp.pages);
+			// $('input[name="isbn"]',_insertBookForm).val(resp.isbn);
+			// $('input[name="image"]',_insertBookForm).val(resp.image);
+			// $('input[name="publisher"]',_insertBookForm).val(resp.publisher);
+			// $('input[name="language"]',_insertBookForm).val(resp.language);
+			// $('textarea[name="description"]',_insertBookForm).text(resp.description);
 		});
 	},
 
@@ -35,7 +41,7 @@ Template.newbook.events({
 		},3000);
 	}
 });
-var bookFormat = bookFormat || {}
+var bookLib = bookLib || {}
 ,  requestBooks = null;
 (function(){
 	function formatJSON (respJSON){
@@ -70,7 +76,19 @@ var bookFormat = bookFormat || {}
 			};
 		}
 		return JSONformated;
-	}
+	};
 
-	bookFormat.formatJSON = formatJSON;
+	function contentModal(){
+
+	};
+
+	function openModal(content){
+		$('#modal1').openModal();
+	};
+
+	bookLib = {
+		'formatJSON': formatJSON,
+		'openModal': openModal
+	};
+
 })();
