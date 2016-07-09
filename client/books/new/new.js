@@ -21,8 +21,13 @@ Template.newbook.events({
 		_insertBookForm.removeClass('disable');
 		bookLib.openModal();
 		$.getJSON('https://www.googleapis.com/books/v1/volumes?q='+_searchValTitle+''+(inauthor ? inauthor : "")+'&orderBy=relevance&maxResults=5',function(resp){
-			var resp = bookLib.formatJSON(resp.items[0])
-			,   content =  bookLib.contentModal(resp);
+			if(resp.items){
+				var content = [];
+				for (var i in resp.items) {
+					content.push(bookLib.formatJSON(resp.items[i]));
+				}
+			}
+			bookLib.contentModal(content);
 			// $('input[name="title"]',_insertBookForm).val(resp.title);
 			// $('input[name="author"]',_insertBookForm).val(resp.author);
 			// $('input[name="pages"]',_insertBookForm).val(resp.pages);
@@ -78,8 +83,10 @@ var bookLib = bookLib || {}
 		return JSONformated;
 	};
 
-	function contentModal(){
-
+	function contentModal(content){
+		var html = '';
+		$('#modal1 .preloader-wrapper').removeClass('active');
+		$('#modal1 .modal-content h4').after()
 	};
 
 	function openModal(content){
@@ -88,7 +95,8 @@ var bookLib = bookLib || {}
 
 	bookLib = {
 		'formatJSON': formatJSON,
-		'openModal': openModal
+		'openModal': openModal,
+		'contentModal': contentModal
 	};
 
 })();
