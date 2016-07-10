@@ -78,15 +78,20 @@ var bookLib = bookLib || {}
 		$('#selectBook').remove();
 		var html = '<div id=selectBook><ul>';
 		for (var i in content) {
-			var bookInfos = JSON.stringify(content[i]);
-			html += '<li data-book='+bookInfos+'>'+content[i].title+' - '+content[i].author+' <a class="waves-effect waves-light btn-small getBook">Importar</a></li>';
+			var imageBook = content[i].image;
+			delete content[i].image;
+		  var bookInfos = JSON.stringify(content[i]);
+			html += "<li data-image='"+imageBook+"' data-book='"+bookInfos+"'>"+content[i].title+" - "+content[i].author+" <a class='waves-effect waves-light btn-small getBook'>Importar</a></li>";
 		}
 		html+="</ul></div>"
 		$('#modal1 .preloader-wrapper').removeClass('active');
 		$('#modal1 .modal-content h4').after(html);
 		$('#modal1').on('click','.getBook', function(){
-			var bookSelected = $(this).parents('li').attr('data-book');
-			importBook(JSON.parse(bookSelected));
+			var bookSelected = $(this).parents('li').attr('data-book')
+			,   imgBookSelected = $(this).parents('li').attr('data-image')
+			,   params = JSON.parse(bookSelected);
+			params.image = imgBookSelected;
+			importBook(params);
 			$('#modal1').closeModal();
 		});
 	};
