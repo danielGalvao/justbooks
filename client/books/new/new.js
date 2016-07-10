@@ -28,17 +28,8 @@ Template.newbook.events({
 				}
 			}
 			bookLib.contentModal(content);
-			// $('input[name="title"]',_insertBookForm).val(resp.title);
-			// $('input[name="author"]',_insertBookForm).val(resp.author);
-			// $('input[name="pages"]',_insertBookForm).val(resp.pages);
-			// $('input[name="isbn"]',_insertBookForm).val(resp.isbn);
-			// $('input[name="image"]',_insertBookForm).val(resp.image);
-			// $('input[name="publisher"]',_insertBookForm).val(resp.publisher);
-			// $('input[name="language"]',_insertBookForm).val(resp.language);
-			// $('textarea[name="description"]',_insertBookForm).text(resp.description);
 		});
 	},
-
 	'submit #insertBookForm': function (event) {
 		$('#insertBookForm textarea').text('');
 		setTimeout(function(){
@@ -84,10 +75,33 @@ var bookLib = bookLib || {}
 	};
 
 	function contentModal(content){
-		var html = '';
+		$('#selectBook').remove();
+		var html = '<div id=selectBook><ul>';
+		for (var i in content) {
+			var bookInfos = JSON.stringify(content[i]);
+			html += '<li data-book='+bookInfos+'>'+content[i].title+' - '+content[i].author+' <a class="waves-effect waves-light btn-small getBook">Importar</a></li>';
+		}
+		html+="</ul></div>"
 		$('#modal1 .preloader-wrapper').removeClass('active');
-		$('#modal1 .modal-content h4').after()
+		$('#modal1 .modal-content h4').after(html);
+		$('#modal1').on('click','.getBook', function(){
+			var bookSelected = $(this).parents('li').attr('data-book');
+			importBook(JSON.parse(bookSelected));
+			$('#modal1').closeModal();
+		});
 	};
+
+	function importBook(resp){
+		var _insertBookForm = $('#insertBookForm');
+		$('input[name="title"]',_insertBookForm).val(resp.title);
+		$('input[name="author"]',_insertBookForm).val(resp.author);
+		$('input[name="pages"]',_insertBookForm).val(resp.pages);
+		$('input[name="isbn"]',_insertBookForm).val(resp.isbn);
+		$('input[name="image"]',_insertBookForm).val(resp.image);
+		$('input[name="publisher"]',_insertBookForm).val(resp.publisher);
+		$('input[name="language"]',_insertBookForm).val(resp.language);
+		$('textarea[name="description"]',_insertBookForm).text(resp.description);
+	}
 
 	function openModal(content){
 		$('#modal1').openModal();
