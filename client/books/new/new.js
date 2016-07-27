@@ -33,7 +33,8 @@ Template.newbook.events({
 	'submit #insertBookForm': function (event) {
 		$('#insertBookForm textarea').text('');
 		setTimeout(function(){
-			event.target.className = "disable"
+			url = document.URL.split('newbook')[0];
+			window.location.href = url;
 		},3000);
 	}
 });
