@@ -4,6 +4,11 @@ Template.users.helpers({
 		return Users.find({}, {sort: {createdAt: -1}});
 	},
 
+	getUser: function(userID) {
+		var user = Users.find({ "_id": userID})
+		return user.email;
+	}
+
 });
 
 Template.users.events({

@@ -23,16 +23,18 @@
           <b>Autor:</b>
           <span>{{author}}</span>
         </p>
-        {{#if isMyBook}}
-          <a class="waves-effect waves-light btn red removeBook">
-            remover
-            <i class="material-icons left">delete</i>
-          </a>
-        {{else}}
-          <a class="waves-effect waves-light btn getBook">
-            emprestar
-            <i class="material-icons left">open_in_new</i>
-          </a>
+        {{#if currentUser}}
+          {{#if isMyBook}}
+            <a class="waves-effect waves-light btn red removeBook">
+              remover
+              <i class="material-icons left">delete</i>
+            </a>
+            {{else}}
+            <a class="waves-effect waves-light btn getBook">
+              emprestar
+              <i class="material-icons left">open_in_new</i>
+            </a>
+          {{/if}}
         {{/if}}
       </div>
       <div class="card-reavel">
