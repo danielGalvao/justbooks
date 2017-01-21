@@ -1,5 +1,5 @@
 Template.listBooks.helpers({
-	// Retornar os livros salvos no banco
+	// Listing books
 	books: function() {
 		return Books.find({}, {sort: {createdAt: -1}});
 	}
