@@ -11,8 +11,9 @@ Template.eachBook.helpers({
 		return Meteor.userId() == this.creatorID ? true : false;
 	},
 	bookOwner: function() {
-		var user = Meteor.users.find({_id: this.creatorIDs});
-		console.log(user);
+		console.log(this.creatorID);
+		var user = Users.findOne({_id: this.creatorID});
+		return user.emails[0].address;
 	}
 });
 
