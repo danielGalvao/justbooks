@@ -8,11 +8,11 @@ Template.listBooks.helpers({
 Template.eachBook.helpers({
 	// Verify book owner
 	isMyBook: function(){
-		var owner = false;
-		if (Meteor.userId() == this.creatorID) {
-			owner = true;
-		}
-		return owner;
+		return Meteor.userId() == this.creatorID ? true : false;
+	},
+	bookOwner: function() {
+		var user = Meteor.users.find({_id: this.creatorIDs});
+		console.log(user);
 	}
 });
 

@@ -6,7 +6,7 @@ Template.users.helpers({
 
 	getUser: function(userID) {
 		var user = Users.find({ "_id": userID})
-		return user.email;
+		return user;
 	}
 
 });
