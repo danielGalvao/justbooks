@@ -47,12 +47,11 @@ Books.attachSchema(new SimpleSchema({
   },
   creatorID: {
     type: String,
-    regEx: SimpleSchema.RegEx.Id,
     autoform: {
         type: "hidden",
         label: false
     },
-    autoValue: function () { return Meteor.userId() },
+    autoValue: function () { return Meteor.user().emails[0].address },
   }
 }));
 
