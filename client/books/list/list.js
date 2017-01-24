@@ -8,11 +8,12 @@ Template.listBooks.helpers({
 Template.eachBook.helpers({
 	// Verify book owner
 	isMyBook: function(){
-		return Meteor.userId() == this.creatorID ? true : false;
+		var user = Meteor.users.findOne({'emails.address': {$regex:this.creatorID,$options:'i'}});
+		return  user.emails[0].address == this.creatorID ? true : false;
 	},
 	bookOwner: function() {
 		var user = Meteor.users.findOne({'emails.address': {$regex:this.creatorID,$options:'i'}});
-		console.log(user);
+		return user.emails[0].address;
 	}
 });
 
