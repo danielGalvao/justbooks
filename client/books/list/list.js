@@ -37,7 +37,7 @@ Template.eachBook.events({
   },
 	'click .getBook' : function () {
 		if (confirm('Tem certeza que deseja pegar emprestado esse livro?')) {
-				listBooks.requestBook(this._id);
+				listBooks.requestBook(this);
 		}
   }
 });
@@ -45,10 +45,13 @@ Template.eachBook.events({
 var listBooks = listBooks || {};
 (function(){
 	function requestBook(book){
-		Books.update(
-			{_id : book},
-			{$set:{status: 'disable'}}
-		);
+		book.status = 'disable';
+		book.requestedBy = Meteor.user().emails[0].address;
+		bookId = book._id;
+		Books.remove(bookId);
+		setTimeout(function(){
+			Books.insert(book);
+		},1000);
 	};
 	listBooks = {
 		'requestBook': requestBook
