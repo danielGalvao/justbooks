@@ -67,7 +67,11 @@ Books.attachSchema(new SimpleSchema({
         type: "hidden",
         label: false
     },
-    autoValue: function () { return Meteor.user().emails[0].address },
+    autoValue: function () {
+      if ( this.isInsert ) {
+        return Meteor.user().emails[0].address
+      }
+    },
   }
 }));
 
