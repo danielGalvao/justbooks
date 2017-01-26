@@ -25,15 +25,24 @@
         </p>
         {{#if currentUser}}
           {{#if isMyBook}}
+            {{#if isDisableBook}}
+            <a class="waves-effect waves-light btn yellow enableBook">
+              disponível
+              <i class="material-icons left">offline_pin</i>
+            </a>
+            {{else}}
             <a class="waves-effect waves-light btn red removeBook">
               remover
               <i class="material-icons left">delete</i>
             </a>
-            {{else}}
-            <a class="waves-effect waves-light btn getBook">
-              emprestar
-              <i class="material-icons left">open_in_new</i>
-            </a>
+            {{/if}}
+          {{else}}
+            {{#if isEnableBook}}
+              <a class="waves-effect waves-light btn getBook">
+                emprestar
+                <i class="material-icons left">open_in_new</i>
+              </a>
+            {{/if}}
           {{/if}}
         {{/if}}
       </div>

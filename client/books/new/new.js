@@ -38,8 +38,7 @@ Template.newbook.events({
 		},3000);
 	}
 });
-var bookLib = bookLib || {}
-,  requestBooks = null;
+var bookLib = bookLib || {};
 (function(){
 	function formatJSON (respJSON){
 		if(typeof respJSON == 'object'){

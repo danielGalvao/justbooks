@@ -45,6 +45,22 @@ Books.attachSchema(new SimpleSchema({
       }
     }
   },
+  status: {
+    type: String,
+    autoform: {
+        type: "hidden",
+        label: false
+    },
+    autoValue: function () { return 'enable' },
+  },
+  requestedBy: {
+    type: String,
+    autoform: {
+        type: "hidden",
+        label: false
+    },
+    autoValue: function () { return '' },
+  },
   creatorID: {
     type: String,
     autoform: {
