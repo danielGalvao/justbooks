@@ -8,19 +8,14 @@ Router.route('/', {
 		return this.subscribe('books');
 	},
 	action: function() {
-		this.render('listBooks');
+		if (Meteor.user()) {
+			this.render('listBooks');
+		} else {
+			this.render('notlogged');
+		}
 	}
 });
 
-Router.route('/users', {
-	seo: {
-		title: 'Just Books - Usuários'
-	},
-	name: 'users',
-	action: function() {
-		this.render('users');
-	}
-});
 
 Router.route('/newbook', {
 	seo: {
@@ -31,7 +26,11 @@ Router.route('/newbook', {
 		return this.subscribe('books');
 	},
 	action: function() {
-		this.render('newbook');
+		if (Meteor.user()) {
+			this.render('newbook');
+		} else {
+			this.render('notlogged');
+		}
 	}
 });
 
@@ -44,6 +43,10 @@ Router.route('/listbooks', {
 		return this.subscribe('books');
 	},
 	action: function() {
-		this.render('listBooks');
+		if (Meteor.user()) {
+			this.render('listBooks');
+		} else {
+			this.render('notlogged');
+		}
 	}
 });
