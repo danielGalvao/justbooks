@@ -32,10 +32,10 @@ Template.newbook.events({
 	},
 	'submit #insertBookForm': function (event) {
 		$('#insertBookForm textarea').text('');
-		setTimeout(function(){
+		Materialize.toast('Livro cadastrado com sucesso!', 3000, '', function(){
 			url = document.URL.split('newbook')[0];
 			window.location.href = url;
-		},3000);
+		});
 	}
 });
 var bookLib = bookLib || {};
