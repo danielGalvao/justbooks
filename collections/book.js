@@ -50,28 +50,21 @@ Books.attachSchema(new SimpleSchema({
     autoform: {
         type: "hidden",
         label: false
-    },
-    autoValue: function () { return 'enable' },
+    }
   },
   requestedBy: {
     type: String,
     autoform: {
         type: "hidden",
         label: false
-    },
-    autoValue: function () { return '' },
+    }
   },
   creatorID: {
     type: String,
     autoform: {
         type: "hidden",
         label: false
-    },
-    autoValue: function () {
-      if ( this.isInsert ) {
-        return Meteor.user().emails[0].address
-      }
-    },
+    }
   }
 }));
 
