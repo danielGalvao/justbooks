@@ -4,6 +4,7 @@ Template.newbook.rendered = function() {
 		var creatorID = user.emails[0].address;
 	}
 	$('#insertBookForm input[name="creatorID"]').val(creatorID);
+	$('#insertBookForm input[name="status"]').val('enable');
 },
 
 Template.newbook.events({

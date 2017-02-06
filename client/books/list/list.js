@@ -31,29 +31,37 @@ Template.eachBook.events({
 		$(".card[data-bk="+this._id+"] .card-reavel").removeClass('active');
 	},
 	'click .removeBook' : function () {
-		if (confirm('Tem certeza que deseja remover esse livro?')) {
+		if (confirm('Deseja remover esse livro?')) {
 				Books.remove(this._id);
 		}
   },
 	'click .getBook' : function () {
-		if (confirm('Tem certeza que deseja pegar emprestado esse livro?')) {
+		if (confirm('Deseja pegar emprestado esse livro?')) {
 				listBooks.requestBook(this);
+		}
+  },
+	'click .enableBook' : function () {
+		if (confirm('Deseja retornar esse livro?')) {
+				listBooks.returnBook(this);
 		}
   }
 });
 
 var listBooks = listBooks || {};
 (function(){
+
 	function requestBook(book){
-		book.status = 'disable';
-		book.requestedBy = Meteor.user().emails[0].address;
-		bookId = book._id;
-		Books.remove(bookId);
-		setTimeout(function(){
-			Books.insert(book);
-		},1000);
+		var requestedBy = Meteor.user().emails[0].address;
+		Books.update({'_id': book._id},{$set: {'status': 'disable', 'requestedBy': requestedBy}});
 	};
+
+	function returnBook(book){
+		var requestedBy = '';
+		Books.update({'_id': book._id},{$set: {'status': 'enable', 'requestedBy': requestedBy}});
+	};
+
 	listBooks = {
-		'requestBook': requestBook
+		'requestBook': requestBook,
+		'returnBook': returnBook
 	};
 })();

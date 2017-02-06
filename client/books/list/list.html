@@ -56,10 +56,10 @@
           {{title}}
           <i class="material-icons right closeDesc">close</i>
         </span>
-        Dono:
-        <div class="chip">
-          {{creatorID}}
-        </div>
+        <p>Dono: <div class="chip">{{creatorID}}</div></p>
+        {{#if requestedBy}}
+        <p>Emprestado: <div class="chip">{{requestedBy}}</div></p>
+        {{/if}}
         <p>{{description}}</p>
       </div>
     </div>
