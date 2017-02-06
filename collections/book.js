@@ -47,6 +47,7 @@ Books.attachSchema(new SimpleSchema({
   },
   status: {
     type: String,
+    optional: true,
     autoform: {
         type: "hidden",
         label: false
@@ -54,6 +55,7 @@ Books.attachSchema(new SimpleSchema({
   },
   requestedBy: {
     type: String,
+    optional: true,
     autoform: {
         type: "hidden",
         label: false
@@ -61,6 +63,7 @@ Books.attachSchema(new SimpleSchema({
   },
   creatorID: {
     type: String,
+    optional: true,
     autoform: {
         type: "hidden",
         label: false

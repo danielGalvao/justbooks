@@ -1,3 +1,11 @@
+Template.newbook.rendered = function() {
+	var user = Meteor.user();
+  if (user && user.emails ) {
+		var creatorID = user.emails[0].address;
+	}
+	$('#insertBookForm input[name="creatorID"]').val(creatorID);
+},
+
 Template.newbook.events({
 	'keyup input[name="title"]' : function(e){
 		var _inputSearch = $('input[name="title"]')
