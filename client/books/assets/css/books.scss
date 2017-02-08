@@ -40,6 +40,7 @@
   }
 }
 
+.card.supersmall,
 .card.small {
   width: 200px;
   display: inline-block;
@@ -129,6 +130,22 @@
   background-color: #e4e4e4;
 }
 
+.card.supersmall {
+  width: 80px;
+  height: 100px;
+  .card-image {
+    height: 50%;
+    overflow: hidden;
+  }
+  .card-content {
+    padding: 5px;
+    .card-title {
+      font-size: 11px;
+      line-height: 11px;
+    }
+  }
+}
+
 #login-buttons .login-close-text {
-  float: right!important; 
+  float: right!important;
 }

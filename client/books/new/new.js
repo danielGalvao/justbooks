@@ -29,7 +29,7 @@ Template.newbook.events({
 		,   inauthor = _searchValAuthor.length ? '+inauthor:'+_searchValAuthor : false;
 		_insertBookForm.removeClass('disable');
 		bookLib.openModal();
-		$.getJSON('https://www.googleapis.com/books/v1/volumes?q='+_searchValTitle+''+(inauthor ? inauthor : "")+'&orderBy=relevance&maxResults=5',function(resp){
+		$.getJSON('https://www.googleapis.com/books/v1/volumes?q='+_searchValTitle+''+(inauthor ? inauthor : "")+'&orderBy=relevance&maxResults=20',function(resp){
 			if(resp.items){
 				var content = [];
 				for (var i in resp.items) {
@@ -90,7 +90,15 @@ var bookLib = bookLib || {};
 			var imageBook = content[i].image;
 			delete content[i].image;
 		  var bookInfos = JSON.stringify(content[i]);
-			html += "<li data-image='"+imageBook+"' data-book='"+bookInfos+"'>"+content[i].title+" - "+content[i].author+" <a class='waves-effect waves-light btn-small getBook'>Importar</a></li>";
+			html += "<li class='card supersmall hoverable' data-image='"+imageBook+"' data-book='"+bookInfos+"'>"
+							+"<div class='card-image wave-effect waves-block waves-light'>"
+								+"<img class='activator' src='"+imageBook+"' />"
+							+"</div>"
+							+"<div class='card-content'>"
+			      		+"<span title='"+content[i].title+" - "+content[i].author+"' class='card-title activator'>"+content[i].title+" - "+content[i].author+"</span>"
+								+"<p><a class='waves-effect waves-light btn-small getBook'>Importar</a></p>"
+							+"</div>"
+						+"</li>";
 		}
 		html+="</ul></div>"
 		$('#modal1 .preloader-wrapper').removeClass('active');
