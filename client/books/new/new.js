@@ -39,6 +39,9 @@ Template.newbook.events({
 			bookLib.contentModal(content);
 		});
 	},
+	'click .cancelBook' : function(){
+		bookLib.clearForm();
+	},
 	'submit #insertBookForm': function (event) {
 		$('#insertBookForm textarea').text('');
 		Materialize.toast('Livro cadastrado com sucesso!', 3000, '', function(){
@@ -110,6 +113,7 @@ var bookLib = bookLib || {};
 			params.image = imgBookSelected;
 			importBook(params);
 			$('#modal1').closeModal();
+			changeButtons({name:'Cancelar',icon:'delete',type:'toCancel'});
 		});
 	};
 
@@ -125,6 +129,29 @@ var bookLib = bookLib || {};
 		$('textarea[name="description"]',_insertBookForm).text(resp.description);
 	}
 
+	function clearForm() {
+		var _insertBookForm = $('#insertBookForm');
+		$('input[name="title"]',_insertBookForm).val('');
+		$('input[name="author"]',_insertBookForm).val('');
+		$('input[name="pages"]',_insertBookForm).val('');
+		$('input[name="isbn"]',_insertBookForm).val('');
+		$('input[name="image"]',_insertBookForm).val('');
+		$('input[name="publisher"]',_insertBookForm).val('');
+		$('input[name="language"]',_insertBookForm).val('');
+		$('textarea[name="description"]',_insertBookForm).text('').val('');
+		changeButtons({name:'Importar',icon:'import_export',type:'toImport'});
+	}
+
+	function changeButtons(changeTo) {
+		var btnImport = $('#btnImport')
+		,   classNames = changeTo.type == 'toCancel' ? 'red cancelBook' : 'importBook'
+		,   rmCLasses = changeTo.type == 'toCancel' ? 'importBook' : 'red cancelBook';
+		btnImport
+			.html(changeTo.name+' <i class="material-icons left">'+changeTo.icon+'</i>')
+			.addClass(classNames)
+			.removeClass(rmCLasses);
+	}
+
 	function openModal(content){
 		$('#modal1').openModal();
 	};
@@ -132,7 +159,8 @@ var bookLib = bookLib || {};
 	bookLib = {
 		'formatJSON': formatJSON,
 		'openModal': openModal,
-		'contentModal': contentModal
+		'contentModal': contentModal,
+		'clearForm': clearForm
 	};
 
 })();
